@@ -1,0 +1,109 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model IEnumerable<front.examensegundoparcial.Models.clienteModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes</title> 
+</head>
+<body>
+    <p>
+        <a asp-action="Create">Nuevo Cliente</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                ID
+            </tr>
+            <tr>
+                idCiudad
+            </tr>
+            <tr>
+                Nombres
+            </tr>
+            <tr>
+                Apellidos
+            </tr>
+            <tr>
+                Documento
+            </tr>
+            <tr>
+                Telefono
+            </tr>
+            <tr>
+                Email
+            </tr>
+            <tr>
+                Fecha de Nacimiento
+            </tr>
+            <tr>
+                Ciudad
+            </tr>
+            <tr>
+                Nacionalidad
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach(var cliente in Model){
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => cliente.id)
+                    </td>
+                
+                
+                    <td>
+                        @Html.DisplayFor(modelItem => cliente.idCiudad)
+                    </td>
+                
+                
+                    <td>
+                        @Html.DisplayFor(modelItem => cliente.Nombres)
+                    </td>
+                
+                
+                    <td>
+                        @Html.DisplayFor(modelItem => cliente.Apellidos)
+                    </td>
+                
+               
+                    <td>
+                        @Html.DisplayFor(modelItem => cliente.Documento)
+                    </td>
+                
+                
+                    <td>
+                        @Html.DisplayFor(modelItem => cliente.Telefono)
+                    </td>
+                
+                    <td>
+                        @Html.DisplayFor(modelItem => cliente.Email)
+                    </td>
+                
+                    <td>
+                        @Html.DisplayFor(modelItem => cliente.FechaNacimiento)
+                    </td>
+                
+                    <td>
+                        @Html.DisplayFor(modelItem => cliente.Ciudad)
+                    </td>
+                
+                    <td>
+                        @Html.DisplayFor(modelItem => cliente.Nacionalidad)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
