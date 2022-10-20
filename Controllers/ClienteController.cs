@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Text;
 
 namespace front.examensegundoparcial.Controllers
 {
@@ -16,7 +17,7 @@ namespace front.examensegundoparcial.Controllers
             
             
             var api = new HttpClient();
-            var json = await api.GetStringAsync("https://localhost:7064/cliente/1");
+            var json = await api.GetStringAsync("https://localhost:7064/cliente/2");
 
 
             Models.clienteModel cliente = JsonConvert.DeserializeObject<Models.clienteModel>(json);
@@ -39,12 +40,18 @@ namespace front.examensegundoparcial.Controllers
         // POST: ClienteController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Models.clienteModel cliente)
+        public async Task<ActionResult> Create(Models.clienteModel cliente)
         {
             try
             {
                 var json = JsonConvert.SerializeObject(cliente);
+                var data = new StringContent(json, Encoding.UTF8, "Application/json");
+
                 var api = new HttpClient();
+
+
+                var response = await api.PostAsync("https://localhost:7064/cliente/", data);
+
 
                 return RedirectToAction(nameof(Index));
             }
